@@ -40,9 +40,9 @@ $Tanggal = new \App\Helpers\Tanggal; //panggil no static function
 		@php $no=1; @endphp
 		@if(count($data))
 		@foreach($data as $dt)
-			@php 
+			{{-- @php 
 			$dbKategori=DB::table('users')->select('*')->first();
-			@endphp
+			@endphp --}}
 			<tr>
 				<td>{{$no++}}</td>
 				{{-- <td><img width="100px" height="60px" class="rounded-5" src="@if($dt->img) {{asset('images/user/{{ $dt->img }}')}} @else {{asset('')}}images/no-user.png @endif" style="object-fit:cover"> </td> --}}

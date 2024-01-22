@@ -31,9 +31,9 @@ $Tanggal = new \App\Helpers\Tanggal; //panggil no static function
     @php $no=1; @endphp
     @if(count($data))
     @foreach($data as $dt)
-        @php 
+        {{-- @php 
         $dbKategori=DB::table('tm_kategoribarang')->select('*')->where('id','=',$dt->kategori_id)->first();
-        @endphp
+        @endphp --}}
         <tr>
             <td>{{$no++}}</td>
             <td>{{$dt->kode??''}}</td>

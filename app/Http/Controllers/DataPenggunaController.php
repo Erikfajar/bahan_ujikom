@@ -278,12 +278,12 @@ class DataPenggunaController extends Controller
     public function export_excel(Request $request)
     {
         //DECLARE REQUEST
-        // $f1=$request->input('f1');
+        $f1=$request->input('f1');
         //QUERY
         $data = DtPengguna::select('*');
-        // if($f1){
-        //     $data->where('kategori_id','=',''.$f1.'')->get();
-        // }
+        if($f1){
+            $data->where('isrole','=',''.$f1.'')->get();
+        }
         $data = $data->get();
 
         // Pass parameters to the export class
@@ -299,12 +299,12 @@ class DataPenggunaController extends Controller
     public function export_pdf(Request $request)
     {
         //DECLARE REQUEST
-        // $f1=$request->input('f1');
+        $f1=$request->input('f1');
         //QUERY
         $data = DtPengguna::select('*');
-        // if($f1){
-        //     $data->where('kategori_id','=',''.$f1.'')->get();
-        // }
+        if($f1){
+            $data->where('isrole','=',''.$f1.'')->get();
+        }
         $data = $data->get();
 
         // Pass parameters to the export view

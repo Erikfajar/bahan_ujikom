@@ -186,18 +186,18 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
         $("#mdl_formImport").modal('show');
     }
     function exportExcel() {
-        // var f1 =  $('#f1').val();
+         var f1 =  $('#f1').val();
         var s = $('.whatever').val();		
         window.open(
-        "data_pengguna/export_excel?s="+s,
+        "data_pengguna/export_excel?s="+s+"&f1="+f1,
             '_blank' // <- This is what makes it open in a new window.
         );
     }
     function exportPdf() {
-        // var f1 =  $('#f1').val();
+        var f1 =  $('#f1').val();
         var s = $('.whatever').val();		
         window.open(
-        "data_pengguna/export_pdf?s="+s,
+        "data_pengguna/export_pdf?s="+s+"&f1="+f1,
             '_blank' // <- This is what makes it open in a new window.
         );
     }
