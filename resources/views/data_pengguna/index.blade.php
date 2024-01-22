@@ -132,7 +132,7 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
                                 <label class="form-label mg-b-0">Format Import </label>
                             </div>
                             <div class="col-md-8 mg-t-5 mg-md-t-0">
-                            <a href="{{asset('')}}format_databarang.xlsx" class="btn btn-sm btn-secondary" download><i class="fa fa-download me-2"></i> Download Format Excel Import</a>
+                            <a href="{{asset('')}}format_datapengguna.xlsx" class="btn btn-sm btn-secondary" download><i class="fa fa-download me-2"></i> Download Format Excel Import</a>
                             </div>
                         </div>
                         <div class="row row-xs align-items-top mg-b-20">
