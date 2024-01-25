@@ -47,12 +47,12 @@ Route::get('/data_barang/export_pdf', [DataBarangController::class, 'export_pdf'
 Route::group(['middleware'=>['auth','roleaccess:administrator']], function(){
     Route::resource('/data_pengguna','DataPenggunaController')->except(['show']);
     Route::match(['get','post'],'/data_pengguna', [DataPenggunaController::class, 'index'])->name('data_pengguna');
-    Route::get('/data_pengguna/input', [DataPenggunaController::class, 'input'])->name('data_pengguna.input');
-    Route::post('/data_pengguna/create', [DataPenggunaController::class, 'create'])->name('data_pengguna.create');
-    Route::get('/data_pengguna/edit/{id}', [DataPenggunaController::class, 'edit'])->name('data_pengguna.edit');
-    Route::put('/data_pengguna/update/{id}', [DataPenggunaController::class, 'update'])->name('data_pengguna.update');
-    Route::delete('/data_pengguna/destroy/{id}', [DataPenggunaController::class, 'destroy'])->name('data_pengguna.destroy');
-    Route::get('/data_pengguna/export_pdf', [DataPenggunaController::class, 'export_pdf'])->name('data_pengguna.export_pdf');
-    Route::get('/data_pengguna/export_excel', [DataPenggunaController::class, 'export_excel'])->name('data_pengguna.export_excel');
-    Route::post('/data_pengguna/import_excel', [DataPenggunaController::class, 'import_excel'])->name('data_pengguna.import_excel');
+    Route::get('/data_pengguna/input', [DataPenggunaController::class, 'input'])->name('data_pengguna.input'); // ROUTE UNTUK MENAMPILKAN FORM INPUT
+    Route::post('/data_pengguna/create', [DataPenggunaController::class, 'create'])->name('data_pengguna.create'); // ROUTE UNTUK MEMPROSES CREATE DATA
+    Route::get('/data_pengguna/edit/{id}', [DataPenggunaController::class, 'edit'])->name('data_pengguna.edit'); // ROUTE UNTUK MENAMPILKAN FORM EDIT
+    Route::put('/data_pengguna/update/{id}', [DataPenggunaController::class, 'update'])->name('data_pengguna.update'); // ROUTE UNTUK MEMPROSES UPDATE DATA
+    Route::delete('/data_pengguna/destroy/{id}', [DataPenggunaController::class, 'destroy'])->name('data_pengguna.destroy'); // ROUTE UNTUK MEMPROSES DELETE DATA
+    Route::get('/data_pengguna/export_pdf', [DataPenggunaController::class, 'export_pdf'])->name('data_pengguna.export_pdf'); // ROUTE UNTUK PROSES EXPORT PDF
+    Route::get('/data_pengguna/export_excel', [DataPenggunaController::class, 'export_excel'])->name('data_pengguna.export_excel');// ROUTE UNTUK PROSES ESPORT EXCEL
+    Route::post('/data_pengguna/import_excel', [DataPenggunaController::class, 'import_excel'])->name('data_pengguna.import_excel');// ROUTE UNTUK PROSES IMPORT EXCEL
 });

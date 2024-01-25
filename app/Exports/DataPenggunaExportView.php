@@ -16,6 +16,7 @@ class DataPenggunaExportView implements FromView, WithEvents
         $this->data = $data;
     }
 
+    // FUNGSI UNTUK MENGARAHKAN FILE BLADE YANG MAU DI EXPORT
     public function view(): View
     {
         return view('data_pengguna.exportExcel', [
