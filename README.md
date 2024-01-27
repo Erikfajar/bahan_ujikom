@@ -1,1 +1,1 @@
-![Tampilan Aplikasi](/Img/Img_tampilan/login.png)
+![Tampilan Aplikasi](/ImgTugas/Img_tampilan/Login.png)
