@@ -14,6 +14,7 @@ use Validator;
 use App\Imports\ImportDataBarangClass;
 use App\Exports\DataBarangExportView;
 use Excel;
+use Illuminate\Support\Facades\Session;
 //LOAD PACKAGE PDF
 use PDF;
 
@@ -370,6 +371,7 @@ class DataBarangController extends Controller
 
     public function export_excel(Request $request)
     {
+        
         //DECLARE REQUEST
         $f1=$request->input('f1');
         //QUERY
