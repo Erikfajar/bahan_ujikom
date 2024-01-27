@@ -12,10 +12,10 @@
 				<div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white" >
 					<div class="my-auto authentication-pages">
 						<div>
-							<img src="{{asset('')}}back/img/brand/logo-white.png" class=" m-0 mb-4" alt="logo">
-							<h5 class="mb-4">Responsive Modern Dashboard &amp; Admin Template</h5>
-							<p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							<a href="index.html" class="btn btn-success">Learn More</a>
+							<img src="{{asset('')}}back/img/erik.png" class=" m-0 mb-4" alt="logo">
+							{{-- <h5 class="mb-4">Apps Data Barang &amp; Admin Template</h5> --}}
+							<p class="mb-5">Aplikasi Data Barang adalah Aplikasi Website yang di gunakan untuk mendata semua barang yang ada</p>
+						
 						</div>
 					</div>
 				</div>
@@ -31,12 +31,12 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 <input name="email" class="form-control" placeholder="Enter your email"
-                                    type="email" required autofocus>
+                                    type="email" value="erikfkkk1305@gmail.com" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label>Password</label> 
                                 <input name="password" class="form-control"
-                                    placeholder="Enter your password" type="password" value="password" required>
+                                    placeholder="Enter your password" type="password" value="12345678" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block"><i class="fe fe-log-in"></i> Sign In</button>
                         </form>

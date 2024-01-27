@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-//LOAD MODEL
-use App\Models\DtBarang;
-use App\Models\TmKategoriBarang;
 use App\Models\User;
+use App\Models\DtBarang;
+//LOAD MODEL
+use App\Models\DtPengguna;
+use Illuminate\Http\Request;
+use App\Models\TmKategoriBarang;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class DashboardController extends Controller
@@ -15,6 +17,8 @@ class DashboardController extends Controller
 
     public function index(Request $request)
 	{
+        $total_admin = DtPengguna::where('namerole','administrator')->count();
+        $total_operator = DtPengguna::where('namerole','operator')->count();
         $total_user = User::count();
         $total_barang = DtBarang::count();
         $total_kategoribarang = TmKategoriBarang::count();
@@ -62,7 +66,26 @@ class DashboardController extends Controller
             $GrafikC .= "{$queryC},";
         }
         $dataGrafikC=rtrim($GrafikC, ',');
+
+        #GRAFIK USER PER-BULAN -------------------------------------------------------------------------------------
+        $GrafikD = "";
+        for($i=1;$i<=12;$i++){
+            $queryD=DtPengguna::select('*')->whereRaw('MONTH(created_at)='.$i.'')->count();
+            $GrafikD .= "{$queryD},";
+        }
+        $dataGrafikD=rtrim($GrafikD, ',');
         
+        #GRAFIK USER PER-ROLE -------------------------------------------------------------------------------------
+        $queryE = DtPengguna::selectRaw('namerole, COUNT(id) as total')
+        ->groupBy('namerole')
+        ->get();
+
+    $dataGrafikE = '';
+    foreach ($queryE as $grg) {
+        $namerole = $grg->namerole ?? '';
+        $total = $grg->total ?? 0;
+        $dataGrafikE .= "{ name: '{$namerole}', y: {$total} },";
+    }
 
         return view('dashboard.index',[
             'total_user' => $total_user,
@@ -72,6 +95,10 @@ class DashboardController extends Controller
             'dataGrafikA' => $dataGrafikA,
             'dataGrafikB' => $dataGrafikB,
             'dataGrafikC' => $dataGrafikC,
+            'dataGrafikD' => $dataGrafikD,
+            'dataGrafikE' => $dataGrafikE,
+            'total_admin' => $total_admin,
+            'total_operator' => $total_operator,
         ]);
 	}
 

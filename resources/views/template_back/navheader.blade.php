@@ -1,5 +1,5 @@
     <!-- main-header -->
-    <div class="main-header side-header sticky nav nav-item bg-primary">
+    <div class="main-header side-header sticky nav nav-item bg-danger">
         <div class="container-fluid main-container">
             <div class="main-header-left ">
                 <div class="app-sidebar__toggle mobile-toggle" data-bs-toggle="sidebar">
@@ -18,7 +18,7 @@
             <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0  mg-lg-s-auto">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                     <div class="main-header-right">
-                        <div class="nav nav-item nav-link" id="bs-example-navbar-collapse-1">
+                        {{-- <div class="nav nav-item nav-link" id="bs-example-navbar-collapse-1">
                             <form class="navbar-form" role="search">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search">
@@ -32,7 +32,7 @@
                                     </span>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                         <li class="dropdown nav-item main-layout">
                             <a class="new theme-layout nav-link-bg layout-setting" >
                                 <span class="dark-layout"><i class="fe fe-moon"></i></span>
@@ -45,11 +45,20 @@
                             </div>
                             
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
-                                <a class="profile-user d-flex" href=""><img src="{{asset('')}}back/img/faces/6.jpg" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
-
+                                <a class="profile-user d-flex" href="">
+                                    @if (Auth::user()->img)
+                                    <img src="{{asset('')}}images/user/{{ Auth::user()->img }}" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+                                    @else
+                                    <img src="{{asset('')}}back/img/faces/6.jpg" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+                                    @endif
                                 <div class="dropdown-menu">
                                     <div class="main-header-profile header-img">
-                                        <div class="main-img-user"><img alt="" src="{{asset('')}}back/img/faces/6.jpg"></div>
+                                        <div class="main-img-user">
+                                            @if (Auth::user()->img)
+                                            <img alt="" src="{{asset('')}}images/user/{{ auth::user()->img }}"></div>
+                                            @else
+                                            <img alt="" src="{{asset('')}}back/img/faces/6.jpg"></div>
+                                            @endif
                                         <h6>@auth {{ auth()->user()->name }} @endauth</h6>
                                         <span>@auth {{ auth()->user()->namerole }} @endauth</span>
 
@@ -64,14 +73,14 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="dropdown main-header-message right-toggle">
+                            {{-- <div class="dropdown main-header-message right-toggle">
                                 <!-- <a class="nav-link pe-0" data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
                                     <i class="ion ion-md-menu tx-20 bg-transparent"></i>
                                 </a> -->
                                 <a class="nav-link pe-0">
                                     <i class="ion ion-md-menu tx-20 bg-transparent"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

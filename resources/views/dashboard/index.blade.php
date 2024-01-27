@@ -54,7 +54,7 @@
     <div class="main-content-body">
 
         <div class="row row-sm">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
                 <div class="card overflow-hidden project-card">
                     <div class="card-body">
                         <div class="d-flex">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
                 <div class="card  overflow-hidden project-card">
                     <div class="card-body">
                         <div class="d-flex">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
                 <div class="card overflow-hidden project-card">
                     <div class="card-body">
                         <div class="d-flex">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
                 <div class="card overflow-hidden project-card">
                     <div class="card-body">
                         <div class="d-flex">
@@ -142,9 +142,61 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                <div class="card overflow-hidden project-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="my-auto">
+                                <div class="me-4 ht-60 wd-60 my-auto primary">
+                                <img src="{{ asset('') }}images/svg/akun.svg" width="100px" height="100px" class="ht-40 wd-60">
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h6 class="card-title">Akun Administrator</h6>
+                                <ul>
+                                    <li>
+                                        <strong>Total</strong>
+                                        <span>{{$total_admin}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                <div class="card overflow-hidden project-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="my-auto">
+                                <div class="me-4 ht-60 wd-60 my-auto warning">
+                                <img src="{{ asset('') }}images/svg/akun.svg" width="100px" height="100px" class="ht-40 wd-60">
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h6 class="card-title">Akun Operator</h6>
+                                <ul>
+                                    <li>
+                                        <strong>Total</strong>
+                                        <span>{{$total_operator}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
         </div>
 
         <div class="row row-sm">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="card overflow-hidden">
+                    <div class="card-body pd-y-7 pt-3">
+                        <div id="grafik_user_perbulan" style="width:100%"></div>
+                    </div>
+                </div>
+            </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <div class="card overflow-hidden">
                     <div class="card-body pd-y-7 pt-3">
@@ -159,6 +211,7 @@
                     </div>
                 </div>
             </div>
+        
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="card overflow-hidden">
                     <div class="card-body pd-y-7 pt-3">
@@ -305,6 +358,100 @@
         series: [{
             name: 'Semua Barang',
             data: [{!!$dataGrafikC!!}]
+        }, ]
+    });
+</script>
+
+{{-- <script>
+    Highcharts.setOptions({
+        colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: {
+                    cx: 0.5,
+                    cy: 0.3,
+                    r: 0.7
+                },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.color(color).brighten(-0.3).get('rgb')]
+                ]
+            };
+        })
+    });
+
+    // Build the chart
+    Highcharts.chart('grafik_user', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Grafik Jumlah Data Pengguna per Role',
+        },
+        subtitle: {
+            text: 'Tahun {{ date("Y") }}'
+        },
+        tooltip: {
+            pointFormat: '{series.namerole}: <b>{point.percentage:.1f}% | {point.y} data</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'data'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<span style="font-size: 1.2em"><b>{point.namerole}</b></span><br>' +
+                        '<span style="opacity: 0.6">{point.percentage:.1f} % | {point.y} data</span>',
+                    connectorColor: 'rgba(128,128,128,0.5)'
+                }
+            }
+        },
+        series: [{
+            name: 'jumlah',
+            data: [
+                {!! $dataGrafikE !!}
+            ]
+        }]
+    });
+</script> --}}
+
+<script>
+    Highcharts.chart('grafik_user_perbulan', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Grafik Jumlah Data Pengguna Per Bulan'
+        },
+        subtitle: {
+            text: 'Tahun {{date('Y')}}'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Jumlah Pengguna'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'Semua Pengguna',
+            data: [{!!$dataGrafikD!!}]
         }, ]
     });
 </script>
